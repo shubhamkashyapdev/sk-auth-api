@@ -1,14 +1,19 @@
 const express = require('express');
-const { createUser } = require('../controllers/userController');
+const { createUser,authUser,validateUser } = require('../controllers/userController');
 const router = express.Router();
 
+
+// protect routes //
+const {protect} = require('../middlewares/authMiddleware')
 
 
 router.get('/',(req,res) => {
   res.send("Get User");
 });
 
-router.post('/',createUser);
+router.post('/signup',createUser);
+router.post('/login',authUser);
+router.route('/home').get(protect, validateUser)
 
 module.exports = router;
 
