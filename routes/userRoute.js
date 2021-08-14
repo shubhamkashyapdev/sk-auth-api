@@ -8,7 +8,7 @@ const {protect} = require('../middlewares/authMiddleware')
 
 
 router.get('/',(req,res) => {
-  res.send("Get User");
+  res.send("Node.js & Express REST API fot Authentication - signup/login");
 });
 
 router.post('/signup',createUser);
